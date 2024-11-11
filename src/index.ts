@@ -1,10 +1,8 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { BarometerPluginPlugin } from './definitions';
+import { BarometerPlugin } from './definitions';
 
-const BarometerPlugin = registerPlugin<BarometerPluginPlugin>('BarometerPlugin', {
-  web: () => import('./web').then((m) => new m.BarometerPluginWeb()),
-});
+const BarometerPlugin = registerPlugin<BarometerPlugin>('BarometerPlugin');
 
 export * from './definitions';
 export { BarometerPlugin };

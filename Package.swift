@@ -7,22 +7,22 @@ let package = Package(
     products: [
         .library(
             name: "CapacitorBarometer",
-            targets: ["BarometerPluginPlugin"])
+            targets: ["BarometerPlugin"])
     ],
     dependencies: [
         .package(url: "https://github.com/ionic-team/capacitor-swift-pm.git", branch: "main")
     ],
     targets: [
         .target(
-            name: "BarometerPluginPlugin",
+            name: "BarometerPlugin",
             dependencies: [
                 .product(name: "Capacitor", package: "capacitor-swift-pm"),
                 .product(name: "Cordova", package: "capacitor-swift-pm")
             ],
-            path: "ios/Sources/BarometerPluginPlugin"),
+            path: "ios/Sources/BarometerPlugin"),
         .testTarget(
-            name: "BarometerPluginPluginTests",
-            dependencies: ["BarometerPluginPlugin"],
-            path: "ios/Tests/BarometerPluginPluginTests")
+            name: "BarometerPluginTests",
+            dependencies: ["BarometerPlugin"],
+            path: "ios/Tests/BarometerPluginTests")
     ]
 )

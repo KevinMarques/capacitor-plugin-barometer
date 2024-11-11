@@ -1,6 +1,6 @@
 {
-  "name": "capacitor-barometer",
-  "version": "0.0.1",
+  "name": "@kevinmarques/capacitor-barometer",
+  "version": "0.1.0",
   "description": "A Capacitor plugin that allows you to access barometric pressure data from the device's sensors. This plugin provides real-time updates on atmospheric pressure and enables your app to make weather predictions, track altitude changes, or create pressure-based triggers.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -27,7 +27,9 @@
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "native",
+    "barometer",
+    "sensor"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
@@ -39,27 +41,27 @@
     "eslint": "eslint . --ext ts",
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\" --plugin=prettier-plugin-java",
     "swiftlint": "node-swiftlint",
-    "docgen": "docgen --api BarometerPluginPlugin --output-readme README.md --output-json dist/docs.json",
+    "docgen": "docgen --api BarometerPlugin --output-readme README.md --output-json dist/docs.json",
     "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.mjs",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^6.0.0",
-    "@capacitor/core": "^6.0.0",
-    "@capacitor/docgen": "^0.2.2",
-    "@capacitor/ios": "^6.0.0",
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/docgen": "^0.3.0",
+    "@capacitor/ios": "^6.1.2",
     "@ionic/eslint-config": "^0.4.0",
     "@ionic/prettier-config": "^4.0.0",
     "@ionic/swiftlint-config": "^2.0.0",
     "eslint": "^8.57.0",
     "prettier": "^3.3.3",
-    "prettier-plugin-java": "^2.6.4",
+    "prettier-plugin-java": "^2.6.5",
     "rimraf": "^6.0.1",
-    "rollup": "^4.24.0",
+    "rollup": "^4.25.0",
     "swiftlint": "^2.0.0",
-    "typescript": "~4.1.5"
+    "typescript": "~4.9.4"
   },
   "peerDependencies": {
     "@capacitor/core": "^6.0.0"

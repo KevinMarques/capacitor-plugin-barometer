@@ -1,5 +1,5 @@
 import XCTest
-@testable import BarometerPluginPlugin
+@testable import BarometerPlugin
 
 class BarometerPluginTests: XCTestCase {
     func testEcho() {
