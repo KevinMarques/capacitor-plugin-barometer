@@ -1,6 +1,6 @@
 {
   "name": "@kevinmarques/capacitor-barometer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Capacitor plugin that allows you to access barometric pressure data from the device's sensors. This plugin provides real-time updates on atmospheric pressure and enables your app to make weather predictions, track altitude changes, or create pressure-based triggers.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
