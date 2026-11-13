@@ -1,6 +1,6 @@
 {
   "name": "@kevinmarques/capacitor-barometer",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A Capacitor plugin that allows you to access barometric pressure data from the device's sensors. This plugin provides real-time updates on atmospheric pressure and enables your app to make weather predictions, track altitude changes, or create pressure-based triggers.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -9,12 +9,16 @@
   "files": [
     "android/src/main/",
     "android/build.gradle",
+    "android/proguard-rules.pro",
     "dist/",
     "ios/Sources",
     "ios/Tests",
     "Package.swift",
     "CapacitorBarometer.podspec"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Kevin Marques",
   "license": "MIT",
   "repository": {
@@ -29,7 +33,10 @@
     "plugin",
     "native",
     "barometer",
-    "sensor"
+    "sensor",
+    "pressure",
+    "altitude",
+    "weather"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
@@ -38,7 +45,7 @@
     "verify:web": "npm run build",
     "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
     "fmt": "npm run eslint -- --fix && npm run prettier -- --write && npm run swiftlint -- --fix --format",
-    "eslint": "eslint . --ext ts",
+    "eslint": "eslint",
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\" --plugin=prettier-plugin-java",
     "swiftlint": "node-swiftlint",
     "docgen": "docgen --api BarometerPlugin --output-readme README.md --output-json dist/docs.json",
@@ -48,29 +55,26 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^7.0.1",
-    "@capacitor/core": "^7.0.1",
-    "@capacitor/docgen": "^0.3.0",
-    "@capacitor/ios": "^7.0.1",
-    "@ionic/eslint-config": "^0.4.0",
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/core": "^8.6.2",
+    "@capacitor/docgen": "^0.3.1",
+    "@capacitor/ios": "^8.6.2",
+    "@ionic/eslint-config": "^0.5.0",
     "@ionic/prettier-config": "^4.0.0",
     "@ionic/swiftlint-config": "^2.0.0",
-    "eslint": "^8.57.0",
-    "prettier": "^3.3.3",
-    "prettier-plugin-java": "^2.6.5",
-    "rimraf": "^6.0.1",
-    "rollup": "^4.25.0",
+    "eslint": "^10.14.0",
+    "prettier": "^3.10.1",
+    "prettier-plugin-java": "^2.11.0",
+    "rimraf": "^6.1.4",
+    "rollup": "^4.68.2",
     "swiftlint": "^2.0.0",
-    "typescript": "~4.9.4"
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "@capacitor/core": ">=6.0.0"
+    "@capacitor/core": ">=8.0.0"
   },
   "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
-  "eslintConfig": {
-    "extends": "@ionic/eslint-config/recommended"
-  },
   "capacitor": {
     "ios": {
       "src": "ios"
