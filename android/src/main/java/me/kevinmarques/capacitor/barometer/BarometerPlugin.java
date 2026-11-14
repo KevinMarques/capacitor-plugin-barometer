@@ -112,7 +112,7 @@ public class BarometerPlugin extends Plugin implements SensorEventListener {
             }
 
             for (PluginCall call : calls) {
-                float callSeaLevel = (float) call.getDouble("seaLevelPressure", (double) SensorManager.PRESSURE_STANDARD_ATMOSPHERE);
+                float callSeaLevel = getSeaLevelPressure(call);
                 float altitude = SensorManager.getAltitude(callSeaLevel, currentPressure);
 
                 JSObject ret = new JSObject();
@@ -158,7 +158,7 @@ public class BarometerPlugin extends Plugin implements SensorEventListener {
             return;
         }
 
-        float seaLevelPressure = (float) call.getDouble("seaLevelPressure", (double) SensorManager.PRESSURE_STANDARD_ATMOSPHERE);
+        float seaLevelPressure = getSeaLevelPressure(call);
 
         // If we already have a valid cached reading, return it immediately.
         if (!Float.isNaN(currentPressure)) {
@@ -184,7 +184,7 @@ public class BarometerPlugin extends Plugin implements SensorEventListener {
 
     @PluginMethod
     public void getAltitude(PluginCall call) {
-        float seaLevelPressure = (float) call.getDouble("seaLevelPressure", (double) SensorManager.PRESSURE_STANDARD_ATMOSPHERE);
+        float seaLevelPressure = getSeaLevelPressure(call);
 
         // If a specific pressure value was provided, compute directly:
         Double customPressure = call.getDouble("pressure");
@@ -259,6 +259,11 @@ public class BarometerPlugin extends Plugin implements SensorEventListener {
     // -------------------------------------------------------------------------
     // Helpers
     // -------------------------------------------------------------------------
+
+    private float getSeaLevelPressure(PluginCall call) {
+        Double seaLevel = call.getDouble("seaLevelPressure", (double) SensorManager.PRESSURE_STANDARD_ATMOSPHERE);
+        return seaLevel != null ? seaLevel.floatValue() : SensorManager.PRESSURE_STANDARD_ATMOSPHERE;
+    }
 
     private void schedulePendingTimeoutIfNeeded() {
         if (pendingTimeout == null) {
